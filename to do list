@@ -1,0 +1,73 @@
+import os
+
+# Define a dictionary to store tasks
+tasks = {}
+
+def clear_screen():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+def show_menu():
+    print("To-Do List Application")
+    print("----------------------")
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Mark Task as Done")
+    print("4. Delete Task")
+    print("5. Quit")
+
+def add_task():
+    task_name = input("Enter the task name: ")
+    task_description = input("Enter the task description: ")
+    tasks[task_name] = task_description
+    print(f"Task '{task_name}' added.")
+
+def view_tasks():
+    if tasks:
+        print("Tasks:")
+        for task_name, task_description in tasks.items():
+            print(f"- {task_name}: {task_description}")
+    else:
+        print("No tasks to display.")
+
+def mark_task_done():
+    task_name = input("Enter the task name to mark as done: ")
+    if task_name in tasks:
+        del tasks[task_name]
+        print(f"Task '{task_name}' marked as done.")
+    else:
+        print(f"Task '{task_name}' not found.")
+
+def delete_task():
+    task_name = input("Enter the task name to delete: ")
+    if task_name in tasks:
+        del tasks[task_name]
+        print(f"Task '{task_name}' deleted.")
+    else:
+        print(f"Task '{task_name}' not found.")
+
+def main():
+    while True:
+        show_menu()
+        choice = input("Enter your choice (1/2/3/4/5): ")
+
+        if choice == '1':
+            add_task()
+        elif choice == '2':
+            view_tasks()
+        elif choice == '3':
+            mark_task_done()
+        elif choice == '4':
+            delete_task()
+        elif choice == '5':
+            print("Thank you for using the To-Do List Application!")
+            break
+        else:
+            print("Invalid choice. Please select a valid option.")
+
+if __name__ == "__main__":
+    clear_screen()
+    main()
+
