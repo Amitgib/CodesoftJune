@@ -1,6 +1,6 @@
 import os
 
-# Define a dictionary to store tasks
+
 tasks = {}
 
 def clear_screen():
